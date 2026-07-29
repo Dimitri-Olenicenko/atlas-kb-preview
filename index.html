@@ -3,60 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>База знаний проекта — материалы</title>
+<title>База знаний проекта</title>
 <meta name="robots" content="noindex, nofollow, noarchive">
 <style>
 :root{--paper:#fff;--ink:#16223a;--ink2:#48607f;--ink3:#8296b0;--line:#e3e9f2;--paper2:#fbfcfe;
-  --gold:#a8791f;--violet:#6b4fbb;--blue:#1f5fa8;--green:#1a7f4b;
-  --sans:'Segoe UI',system-ui,-apple-system,sans-serif;--mono:Consolas,'SF Mono',monospace}
+  --gold:#a8791f;--violet:#6b4fbb;--blue:#1f5fa8;--green:#1a7f4b;--red:#bf3a3a;--amber:#b56a10;
+  --sans:'Segoe UI',system-ui,-apple-system,sans-serif;--mono:Consolas,'SF Mono',monospace;
+  --sh:0 1px 2px rgba(22,34,58,.04),0 4px 14px rgba(22,34,58,.05)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--sans);background:linear-gradient(150deg,#0d1526,#182741 60%,#1f3055);
-  color:var(--ink);min-height:100vh;display:grid;place-items:center;padding:26px}
-.box{background:var(--paper);border-radius:18px;padding:36px 34px 30px;max-width:560px;width:100%;
-  box-shadow:0 26px 70px rgba(0,0,0,.42)}
-.eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--gold);font-weight:700;margin-bottom:9px}
-h1{font-size:23px;font-weight:800;letter-spacing:-.015em;margin-bottom:9px;line-height:1.2}
-.sub{font-size:13.5px;color:var(--ink2);line-height:1.58;margin-bottom:24px}
-.sub b{color:var(--ink);font-weight:650}
-a.card{display:block;text-decoration:none;color:inherit;background:var(--paper2);border:1px solid var(--line);
-  border-left:4px solid var(--ac);border-radius:12px;padding:16px 18px;margin-bottom:11px;transition:.15s}
-a.card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(22,34,58,.13)}
-.ch{display:flex;align-items:center;gap:11px;margin-bottom:5px}
-.ci{font-size:20px;line-height:1}
-.ct{font-size:15.5px;font-weight:760}
-.cm{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ac);font-weight:700}
-.cd{font-size:12.5px;color:var(--ink2);line-height:1.52;padding-left:31px}
-.note{background:#f3f0fc;border:1px solid #ded5f7;border-radius:10px;padding:12px 15px;
-  font-size:12.5px;color:#4b3690;line-height:1.55;margin-top:18px}
-.note b{color:#3a2775}
-.foot{font-size:11px;color:var(--ink3);margin-top:16px;padding-top:14px;border-top:1px solid var(--line);line-height:1.5}
+body{font-family:var(--sans);background:#f7f9fc;color:var(--ink);line-height:1.6;font-size:14px}
+
+.hero{background:var(--paper);border-bottom:1px solid var(--line);padding:36px 26px 30px}
+.in{max-width:1120px;margin:0 auto}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:10px}
+h1{font-size:clamp(24px,3.4vw,36px);font-weight:800;letter-spacing:-.022em;line-height:1.14;margin-bottom:12px}
+h1 .hl{color:var(--violet)}
+.lead{font-size:15.5px;color:var(--ink2);line-height:1.6;max-width:820px;margin-bottom:22px}
+.lead b{color:var(--ink);font-weight:650}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin-bottom:22px}
+.kpi{background:var(--paper2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.kpi .v{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.kpi .v.g{color:var(--gold)}.kpi .v.vi{color:var(--violet)}.kpi .v.b{color:var(--blue)}.kpi .v.gr{color:var(--green)}
+.kpi .l{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-top:3px;font-weight:600}
+
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--ink);color:#fff;
+  border-radius:9px;padding:11px 17px;font-size:13px;font-weight:670;transition:.15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(22,34,58,.2)}
+.btn.sec{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+.btn.sec:hover{border-color:var(--ink3)}
+.btn .lk{font-size:11px;opacity:.75;font-weight:600}
+
+.wrap{max-width:1120px;margin:0 auto;padding:28px 26px 60px}
+h2{font-size:18px;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
+.sub{font-size:13.5px;color:var(--ink2);margin-bottom:18px;max-width:840px}
+
+.doms{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:12px;margin-bottom:26px}
+.dom{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--ac);
+  border-radius:12px;padding:15px 17px;box-shadow:var(--sh);transition:.15s}
+.dom:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(22,34,58,.11)}
+.dh{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.di{font-size:18px;line-height:1}
+.dom h3{font-size:14px;font-weight:760;line-height:1.25}
+.dtag{font-family:var(--mono);font-size:9px;color:var(--ac);font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;margin-bottom:7px}
+.dom p{font-size:12.2px;color:var(--ink2);line-height:1.52;margin-bottom:8px}
+.dn{font-family:var(--mono);font-size:10px;color:var(--ink3);background:var(--paper2);
+  border:1px solid var(--line);padding:2px 8px;border-radius:9px;display:inline-block;font-weight:600}
+
+.why{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--violet);
+  border-radius:12px;padding:18px 21px;margin-bottom:22px;box-shadow:var(--sh)}
+.why h3{font-size:14.5px;font-weight:770;color:var(--violet);margin-bottom:9px}
+.why p{font-size:13.4px;color:var(--ink2);line-height:1.65;margin-bottom:9px}
+.why p:last-child{margin-bottom:0}
+.why b{color:var(--ink)}
+
+.chain{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 0}
+.ch{font-size:12.5px;font-weight:730;padding:7px 14px;border-radius:99px;color:#fff;white-space:nowrap}
+.ch.c1{background:var(--violet)}.ch.c2{background:var(--green)}.ch.c3{background:var(--blue)}
+.ar{color:var(--ink3);font-weight:700}
+
+.gate{background:linear-gradient(135deg,#16223a,#1f3055);border-radius:13px;padding:20px 23px;color:#fff}
+.gate .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:#c9a961;font-weight:700;margin-bottom:8px}
+.gate p{font-size:13.2px;line-height:1.6;color:#c9d5e6}
+.gate b{color:#fff;font-weight:720}
+.foot{max-width:1120px;margin:0 auto;padding:0 26px 40px;font-size:11.5px;color:var(--ink3);line-height:1.6}
+@media(max-width:640px){.btns{flex-direction:column}.btn{justify-content:center}}
 </style>
 </head>
 <body>
-<div class="box">
-  <div class="eyebrow">Discovery Phase 1 · материалы</div>
-  <h1>База знаний проекта</h1>
-  <p class="sub">Два материала: короткая презентация идеи и рабочая структура базы знаний.
-    Оба защищены паролем — <b>введите его на странице после перехода</b>.</p>
 
-  <a class="card" style="--ac:var(--violet)" href="deck.html">
-    <div class="ch"><span class="ci">📊</span><span class="ct">Презентация</span><span class="cm">4 слайда</span></div>
-    <div class="cd">Что это такое, зачем нужно, как будет работать и что даёт на практике —
-      для комплаенса и для построения платформы.</div>
-  </a>
+<div class="hero">
+ <div class="in">
+  <div class="eyebrow">Discovery Phase 1 · концепция</div>
+  <h1>База знаний проекта —<br><span class="hl">описание того, как всё устроено</span></h1>
+  <p class="lead">Единое место, где по каждому направлению компании записано: <b>что делаем,
+    по каким правилам, с какими партнёрами и на каком основании</b>. Сначала полностью разбираемся
+    в проекте — потом строим продукт, опираясь на эту структуру.</p>
 
-  <a class="card" style="--ac:var(--blue)" href="kb.html">
-    <div class="ch"><span class="ci">🗂</span><span class="ct">Структура базы знаний</span><span class="cm">интерактив</span></div>
-    <div class="cd">13 областей, 31 направление, 62 пункта сбора. Раскрывается по уровням:
-      область → направление → что именно собираем.</div>
-  </a>
+  <div class="kpis">
+    <div class="kpi"><div class="v g">13</div><div class="l">областей</div></div>
+    <div class="kpi"><div class="v vi">31</div><div class="l">направление</div></div>
+    <div class="kpi"><div class="v b">62</div><div class="l">пункта сбора</div></div>
+    <div class="kpi"><div class="v gr">4</div><div class="l">этапа работ</div></div>
+  </div>
 
-  <div class="note">🔒 <b>Доступ по паролю.</b> Материалы зашифрованы: без пароля страница
-    не содержит читаемого текста. Пароль передаётся отдельно от ссылки.</div>
-
-  <div class="foot">Конфиденциально. Не пересылайте ссылку вместе с паролем в одном сообщении.</div>
+  <div class="btns">
+    <a class="btn" href="deck.html">📊 Презентация — 4 слайда <span class="lk">🔒 пароль</span></a>
+    <a class="btn sec" href="kb.html">🗂 Открыть структуру целиком <span class="lk">🔒 пароль</span></a>
+  </div>
+ </div>
 </div>
+
+<div class="wrap">
+  <h2>Тринадцать областей</h2>
+  <p class="sub">Полный контур проекта. Каждая область — самостоятельная зона ответственности
+    со своим набором направлений. Ниже — за что отвечает каждая.</p>
+
+  <div class="doms">
+    <div class="dom" style="--ac:#a8791f"><div class="dh"><span class="di">🧭</span><h3>Навигация и обзор</h3></div>
+      <div class="dtag">Точка входа</div>
+      <p>Что за проект, в какой он стадии и куда смотреть дальше. Понимание за 15 минут.</p>
+      <span class="dn">2 направления</span></div>
+
+    <div class="dom" style="--ac:#c9943b"><div class="dh"><span class="di">⚖️</span><h3>Юридическая структура</h3></div>
+      <div class="dtag">Правовое ядро</div>
+      <p>Что именно мы предлагаем клиенту и на каком основании это законно.</p>
+      <span class="dn">3 направления</span></div>
+
+    <div class="dom" style="--ac:#2fa86a"><div class="dh"><span class="di">🛡️</span><h3>Комплаенс AML / KYC</h3></div>
+      <div class="dtag">Операционный контур</div>
+      <p>Кого пускаем на платформу, как проверяем и что делаем при подозрении.</p>
+      <span class="dn">3 направления</span></div>
+
+    <div class="dom" style="--ac:#b56a10"><div class="dh"><span class="di">🧾</span><h3>Финансы · Учёт · Налоги</h3></div>
+      <div class="dtag">Финансовый контур</div>
+      <p>Что платим, когда, по какой ставке и как объясняем аудитору.</p>
+      <span class="dn">3 направления</span></div>
+
+    <div class="dom" style="--ac:#6b4fbb"><div class="dh"><span class="di">🪙</span><h3>Внутренние расчётные единицы</h3></div>
+      <div class="dtag">Учётный слой</div>
+      <p>Чем внутри платформы платят и чем подтверждают права.</p>
+      <span class="dn">2 направления</span></div>
+
+    <div class="dom" style="--ac:#1f5fa8"><div class="dh"><span class="di">💳</span><h3>Платежи и эскроу</h3></div>
+      <div class="dtag">Денежный контур</div>
+      <p>Как деньги физически приходят и уходят: каналы, партнёры, тарифы, сроки.</p>
+      <span class="dn">3 направления</span></div>
+
+    <div class="dom" style="--ac:#0f766e"><div class="dh"><span class="di">🏙️</span><h3>Отраслевые операции</h3></div>
+      <div class="dtag">Профильный контур</div>
+      <p>Как сделка проходит путь от заявки до завершения и кто в этом участвует.</p>
+      <span class="dn">2 направления</span></div>
+
+    <div class="dom" style="--ac:#8b5cf6"><div class="dh"><span class="di">🧬</span><h3>Идентификация и доказательства</h3></div>
+      <div class="dtag">Доверенный слой</div>
+      <p>Как подтверждается личность и воля сторон, и как действие приобретает силу.</p>
+      <span class="dn">2 направления</span></div>
+
+    <div class="dom" style="--ac:#0891b2"><div class="dh"><span class="di">🔐</span><h3>Данные и приватность</h3></div>
+      <div class="dtag">Защитный контур</div>
+      <p>Что собираем о людях, зачем, где храним, сколько и как удаляем.</p>
+      <span class="dn">3 направления</span></div>
+
+    <div class="dom" style="--ac:#be185d"><div class="dh"><span class="di">🔍</span><h3>Проверка участников</h3></div>
+      <div class="dtag">Скрининг</div>
+      <p>Какие источники и базы подключаем, чтобы знать, с кем работаем.</p>
+      <span class="dn">2 направления</span></div>
+
+    <div class="dom" style="--ac:#7c3aed"><div class="dh"><span class="di">🏛️</span><h3>Регуляторы и разрешения</h3></div>
+      <div class="dtag">Внешний контур</div>
+      <p>С кем взаимодействуем, что получаем и что поддерживаем в актуальном состоянии.</p>
+      <span class="dn">2 направления</span></div>
+
+    <div class="dom" style="--ac:#c04040"><div class="dh"><span class="di">⚠️</span><h3>Риски</h3></div>
+      <div class="dtag">Сквозной слой</div>
+      <p>Что может пойти не так — названное заранее и с планом действий.</p>
+      <span class="dn">2 направления</span></div>
+
+    <div class="dom" style="--ac:#059669"><div class="dh"><span class="di">🎯</span><h3>Подтверждения и качество</h3></div>
+      <div class="dtag">Сквозной слой</div>
+      <p>Что подтверждено документально, а что пока держится на допущении.</p>
+      <span class="dn">2 направления</span></div>
+  </div>
+
+  <div class="why">
+    <h3>Почему сначала база знаний, а потом продукт</h3>
+    <p>Сейчас знание о проекте живёт в переписках, отдельных файлах и головах нескольких человек.
+      Каждый внешний запрос — от банка, юриста или инвестора — запускает один и тот же цикл:
+      <b>вспомнить → найти → собрать → объяснить</b>. И никто не видит картину целиком.</p>
+    <p>Собранная база решает две задачи сразу. Для <b>комплаенса</b> — описанный контур проверок,
+      который отвечает на вопрос банка готовым документом, а не срочной работой. Для <b>разработки</b> —
+      готовое техническое задание: правила и ограничения известны до кода, а не выясняются после запуска.
+      Отдельно: <b>ИИ работает точнее на структуре</b> — качественный результат появляется там,
+      где контекст описан и полон.</p>
+    <div class="chain">
+      <span class="ch c1">База знаний</span><span class="ar">→</span>
+      <span class="ch c2">Комплаенс-контур</span><span class="ar">→</span>
+      <span class="ch c3">Платформа</span>
+    </div>
+  </div>
+
+  <div class="gate">
+    <div class="lbl">Доступ к материалам</div>
+    <p>Презентация и полная структура <b>защищены паролем</b> — материалы зашифрованы,
+      без пароля страница не содержит читаемого текста. <b>Пароль передаётся отдельно от ссылки.</b></p>
+  </div>
+</div>
+
+<div class="foot">
+  Discovery Phase 1 · концепция базы знаний. Перечень областей и состав направлений
+  уточняются на первом этапе совместно с командой проекта. Конфиденциально.
+</div>
+
 </body>
 </html>
